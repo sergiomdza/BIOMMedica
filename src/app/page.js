@@ -1,91 +1,59 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+"use client";
+import Link from 'next/link';
+import { Grid } from "@mui/material";
 import styles from './page.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+//Material UI Imports
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+
+const options = [
+  {
+    tittle: "Inventario",
+    description: "En este apartado podrás revisar todos los equipos médicos correspondientes a cada área y podrás editar sus datos",
+    image: "https://leancomponentes.com/wp-content/webpc-passthru.php?src=https://leancomponentes.com/wp-content/uploads/2022/07/tipos-de-inventarios.jpg&nocache=1",
+    url: '/Inventario'
+  },
+  {
+    tittle: "Solución de Errores",
+    description: "Aquí encontrarás los posibles errores y las posibles soluciones para distintos errores que se puedan presentar",
+    image: "https://static.vecteezy.com/system/resources/previews/008/517/756/non_2x/engineer-fixing-error-flat-illustrations-concept-vector.jpg",
+    url: '/Errores'
+  }
+]
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <Grid container height="100vh" alignItems="center" justifyContent="center" direction="row">
+        {
+          options.map(({ tittle, description, image, url}) => (
+            <Link href={url}>
+              <Card sx={{ maxWidth: 345, margin: '10px' }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={image}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {tittle}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Link>
+          ))
+        }
+      </Grid>
     </main>
   )
 }
