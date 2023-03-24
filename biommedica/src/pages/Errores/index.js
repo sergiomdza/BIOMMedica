@@ -1,14 +1,20 @@
 "use client";
-import styles from '../../app/page.module.css'
 
 import Typography from '@mui/material/Typography';
 
 export default function Errores() {
     return (
-        <main className={styles.main}>
+        <main style={styles.main}>
             <Typography gutterBottom variant="h5" component="div">
-                ERRORES
+                Errores
             </Typography>
         </main>
     )
+}
+
+const styles = {
+    main: {
+        background: "rgb(80,80,80)",
+        background: "linear-gradient(0deg, rgba(80,80,80,1) 0%, rgba(255,255,255,0) 100%)",
+    }
 }
