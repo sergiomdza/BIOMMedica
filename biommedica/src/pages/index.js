@@ -1,7 +1,8 @@
 "use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Grid } from "@mui/material";
-import styles from '@/styles/Home.module.css' 
+import styles from '@/styles/Home.module.css'
 
 //Material UI Imports
 import Card from '@mui/material/Card';
@@ -10,6 +11,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
+
 
 const options = [
   {
@@ -26,8 +31,13 @@ const options = [
   }
 ]
 
+export default function Home({ isConnected }) {
 
-export default function Home() {
+  const [DBalert, setDBalert] = useState(true)
+  const handleClose = () => {
+    setDBalert(false);
+  };
+
   return (
     <div className={styles.main}>
       <Grid container height="100vh" alignItems="center" justifyContent="center" direction="row">
@@ -55,14 +65,23 @@ export default function Home() {
             </Link>
           ))
         }
-        {/* <Snackbar
-          open={true}
+        <Snackbar
+          open={DBalert}
           autoHideDuration={6000}
-          onClose={() => {}}
+          onClose={() => handleClose()}
           message={isConnected ? "DB Connected" : "DB Not Connected"}
-          action={() => {}}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          }
           severity={isConnected ? "success" : "error"}
-        /> */}
+        />
       </Grid>
     </div>
   )
