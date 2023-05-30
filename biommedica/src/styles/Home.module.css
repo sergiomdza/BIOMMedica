@@ -1,6 +1,6 @@
 .main {
-    background: rgb(214,219,220);
-    background: linear-gradient(0deg, rgba(214,219,220,1) 0%, rgba(255,255,255,1) 100%);
+    background: rgb(214, 219, 220);
+    background: linear-gradient(0deg, rgba(214, 219, 220, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .text {
@@ -14,4 +14,45 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
+}
+
+.mainErrors {
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(214, 219, 220);
+    background: linear-gradient(0deg, rgba(214, 219, 220, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.input {
+    padding: 20px;
+}
+
+.selectInput {
+    width: 80%;
+    padding: 10px;
+    margin-left: 10%;
+}
+
+.button_container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 20px 2px;
+}
+
+.button_container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 20px 2px;
+}
+
+.DatePicker {
+    width: 100%;
+    padding: 20px;
 }

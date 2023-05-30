@@ -28,6 +28,12 @@ const options = [
     description: "Aquí encontrarás los posibles errores y las posibles soluciones para distintos errores que se puedan presentar",
     image: "https://static.vecteezy.com/system/resources/previews/008/517/756/non_2x/engineer-fixing-error-flat-illustrations-concept-vector.jpg",
     url: '/Errores'
+  },
+  {
+    title: "Reportes",
+    description: "En este apartado podrás revisar, editar y gestionar todos los reportes de mantenimiento relacionado a los equipos médicosimage.png",
+    image: "https://cdn-icons-png.flaticon.com/512/6330/6330488.png",
+    url: '/Reportes'
   }
 ]
 

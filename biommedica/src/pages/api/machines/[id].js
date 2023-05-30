@@ -19,18 +19,17 @@ export default async (req, res) => {
 
 		case "PUT":
 			try {
-				console.log('Actualizado:', body)
 				try {
 					delete body._id;
 					delete body.createdAt;
 					delete body.updatedAt;
-					console.log('borramos:', body)
 				} catch (error) {
-					
+					console.log('Error Cleaning fields:', error)
 				}
-				const machine = await Machines.findByIdAndUpdate(id, body, { new: true })
+				
+				const { name, location, serial_number, inv_number, brand, model, freq_mant } = JSON.parse(body);
+				const machine = await Machines.findOneAndUpdate({ _id: id }, { $set: { name, location, serial_number, inv_number, brand, model, freq_mant  } }, { new: true })
 				if (!machine) return res.status(404).json({ msg: "Machine not found" });
-				console.log('Actualizado:', machine)
 				return res.status(200).json(machine);
 			} catch (error) {
 				return res.status(500).json({ error: error.message });

@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';    
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function BasicModal({ open, handleClose, onSave, children}) {
+export default function BasicModal({ open, handleClose, onSave, children, title}) {
 
     const guardar = () => {
         onSave();
@@ -15,13 +15,13 @@ export default function BasicModal({ open, handleClose, onSave, children}) {
 
     return (
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Objecto Inventario</DialogTitle>
+            <DialogTitle>{title}</DialogTitle>
             <DialogContent>
                 {children}
             </DialogContent>
             <DialogActions>
-                <Button onClick={guardar} variant="contained">Guardar</Button>
-                <Button onClick={handleClose} color="error" >Cancelar</Button>
+                <Button onClick={guardar} variant="contained">Save</Button>
+                <Button onClick={handleClose} color="error" >Cancel</Button>
             </DialogActions>
         </Dialog>
     );

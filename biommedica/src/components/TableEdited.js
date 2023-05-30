@@ -111,7 +111,7 @@ EnhancedTableHead.propTypes = {
 };
 
 function EnhancedTableToolbar(props) {
-  const { numSelected, onEdit, selected } = props;
+  const { numSelected, onEdit, selected, onDelete } = props;
 
   return (
     <Toolbar
@@ -145,19 +145,22 @@ function EnhancedTableToolbar(props) {
       )}
 
       {numSelected == 1 ? (
-        <Tooltip title="Delete">
-          <IconButton onClick={() => onEdit(selected[0])}>
-            <EditIcon />
-          </IconButton>
-        </Tooltip>
+        <>
+          <Tooltip title="Delete">
+            <IconButton onClick={() => onEdit(selected[0])}>
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton>
+              <DeleteIcon onClick={() => onDelete(selected[0])} />
+            </IconButton>
+          </Tooltip>
+        </>
       ) : (<></>)}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        <></>
       ) : (
         <Tooltip title="Filter list">
           <IconButton>
@@ -175,7 +178,7 @@ EnhancedTableToolbar.propTypes = {
   selected: PropTypes.array,
 };
 
-export default function EnhancedTable({ rows, rowHeaders, totalRows, onEdit }) {
+export default function EnhancedTable({ rows, rowHeaders, totalRows, onEdit, onDelete }) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
@@ -235,7 +238,7 @@ export default function EnhancedTable({ rows, rowHeaders, totalRows, onEdit }) {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} onEdit={onEdit} selected={selected}/>
+        <EnhancedTableToolbar numSelected={selected.length} onEdit={onEdit} selected={selected} onDelete={onDelete} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
