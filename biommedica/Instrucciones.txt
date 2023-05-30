@@ -1,0 +1,5 @@
+Paso 1: Descargar en ZIP 
+
+Paso 2: entrar a la carpeta del ZIP, abrir el CMD y escribir el siguiente comando: "npm i"
+
+Paso 3: en el mismo lugar ejecuta el siguiente comando: "npm run dev"
